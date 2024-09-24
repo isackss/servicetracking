@@ -20,8 +20,19 @@ const Dashboard = () => {
     <div>
       <h1>Dashboard</h1>
       <section>
+        <div className="border flex justify-between p-2 font-bold">
+          <div>ID</div>
+          <div>Tema</div>
+          <div>Departamento</div>
+          <div>Detalles</div>
+        </div>
         {tickets.map((ticket) => (
-          <div key={ticket._id}>{ticket.subject}</div>
+          <div key={ticket._id} className="border flex justify-between p-2">
+            <div>{ticket._id}</div>
+            <div>{ticket.subject}</div>
+            <div>{ticket.department}</div>
+            <div>{ticket.details}</div>
+          </div>
         ))}
       </section>
     </div>
