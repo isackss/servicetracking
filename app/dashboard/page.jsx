@@ -10,7 +10,7 @@ const Dashboard = () => {
       const data = localStorage.getItem("ticket");
 
       if (data) {
-        setTickets([JSON.parse(data)]);
+        setTickets(JSON.parse(data));
       }
     }
     console.log(tickets);
@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1 className="text-3xl">Dashboard</h1>
       <section>
         <div className="border flex justify-between p-2 font-bold">
           <div>ID</div>
