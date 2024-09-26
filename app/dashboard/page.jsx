@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import TicketsCard from "../components/TicketsCard";
 
 const Dashboard = () => {
   const [tickets, setTickets] = useState([]);
@@ -17,24 +18,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl">Dashboard</h1>
-      <section>
-        <div className="border flex justify-between p-2 font-bold">
-          <div>ID</div>
-          <div>Tema</div>
-          <div>Departamento</div>
-          <div>Detalles</div>
-        </div>
-        {tickets.map((ticket) => (
-          <div key={ticket._id} className="border flex justify-between p-2">
-            <div>{ticket._id}</div>
-            <div>{ticket.subject}</div>
-            <div>{ticket.department}</div>
-            <div>{ticket.details}</div>
-          </div>
-        ))}
-      </section>
+    <div className="p-4 min-w-full">
+      <h1 className="text-3xl mb-4">Dashboard</h1>
+      <TicketsCard tickets={tickets} />
     </div>
   );
 };

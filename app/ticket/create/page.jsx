@@ -17,14 +17,13 @@ const Create = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert("Funciona");
-
     createTicket({
       _id: generateUniqueId(),
       department: formData.department,
       subject: formData.subject,
       details: formData.details,
     });
+    alert("Solicitud creada con éxito!");
     router.push("/dashboard");
   };
 
@@ -45,7 +44,7 @@ const Create = () => {
           <div className="mb-5">
             <label className="block font-bold">Departamento:</label>
             <select
-              className="w-full p-2"
+              className="w-full p-2 border rounded-md"
               onChange={handleInputChange}
               name="department"
               defaultValue={formData.department}

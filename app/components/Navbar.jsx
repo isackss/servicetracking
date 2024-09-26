@@ -11,9 +11,9 @@ const Navbar = () => {
           <li>
             <Link
               className="bg-blue-700 text-white font-bold px-4 py-2 rounded-md"
-              href="/ticket/create"
+              href="/"
             >
-              Create
+              Iniciar sesión
             </Link>
           </li>
         </ul>
