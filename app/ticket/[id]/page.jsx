@@ -1,18 +1,19 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { createTicket } from "@/app/lib/actions/ticket.actions";
-import { useId, useState } from "react";
+import { getTicket } from "@/app/lib/actions/ticket.actions";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const Create = () => {
-  const router = useRouter();
-  const generateUniqueId = require("generate-unique-id");
+const Edit = () => {
+  const params = useParams();
   const [formData, setFormData] = useState({
     _id: "",
     department: "",
     subject: "",
     details: "",
   });
+
+  const ticket = getTicket(params.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,13 +24,11 @@ const Create = () => {
       subject: formData.subject,
       details: formData.details,
     });
-    alert("Solicitud creada con éxito!");
+    alert("Solicitud actualizada con éxito!");
     router.push("/dashboard");
   };
 
   const handleInputChange = (e) => {
-    console.log(e.target.name);
-
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -86,4 +85,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Edit;

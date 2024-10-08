@@ -40,7 +40,12 @@ const TicketsCard = ({ tickets }) => {
                 </div>
                 <div className="table-cell p-2 border-b">{ticket.details}</div>
                 <div className="table-cell p-2 border-b">
-                  <button className="text-blue-700 font-medium">Editar</button>
+                  <Link
+                    href={`/ticket/${ticket._id}`}
+                    className="text-blue-700 font-medium"
+                  >
+                    Editar
+                  </Link>
                 </div>
               </div>
             ))}
