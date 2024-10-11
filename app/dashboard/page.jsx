@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import TicketsCard from "../components/TicketsCard";
+import TicketsStatus from "../components/TicketsStatus";
 
 const Dashboard = () => {
   const [tickets, setTickets] = useState([]);
@@ -19,7 +20,8 @@ const Dashboard = () => {
 
   return (
     <div className="p-4 min-w-full">
-      <h1 className="text-3xl mb-4">Dashboard</h1>
+      <h1 className="text-3xl mb-2">Dashboard</h1>
+      <TicketsStatus tickets={tickets} />
       <TicketsCard tickets={tickets} />
     </div>
   );

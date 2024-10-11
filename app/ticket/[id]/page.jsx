@@ -1,10 +1,11 @@
 "use client";
 
-import { getTicket } from "@/app/lib/actions/ticket.actions";
-import { useParams } from "next/navigation";
+import { getTicket, updateTicket } from "@/app/lib/actions/ticket.actions";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Edit = () => {
+  const router = useRouter();
   const params = useParams();
   const [formData, setFormData] = useState({
     _id: "",
@@ -13,13 +14,16 @@ const Edit = () => {
     details: "",
   });
 
-  const ticket = getTicket(params.id);
+  useEffect(() => {
+    const ticket = getTicket(params.id);
+    setFormData(ticket);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createTicket({
-      _id: generateUniqueId(),
+    updateTicket(formData._id, {
+      _id: formData._id,
       department: formData.department,
       subject: formData.subject,
       details: formData.details,
@@ -31,7 +35,7 @@ const Edit = () => {
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  console.log(formData);
   return (
     <div className="p-4">
       <h1 className="text-3xl">Crear Ticket</h1>
@@ -43,7 +47,7 @@ const Edit = () => {
               className="w-full p-2 border rounded-md"
               onChange={handleInputChange}
               name="department"
-              defaultValue={formData.department}
+              value={formData.department}
             >
               <option disabled={formData.department.length && "disabled"}>
                 Seleccione una opción
@@ -77,7 +81,7 @@ const Edit = () => {
             type="submit"
             className="bg-slate-900 text-white px-4 py-2 rounded-md w-full"
           >
-            Registrar
+            Guardar
           </button>
         </form>
       </section>
